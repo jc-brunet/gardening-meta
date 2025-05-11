@@ -10,12 +10,12 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - SeedPacket
   - Water
   - UI
-  - 
-  - 
-  - 
+  - SeedStream
+  - WaterCan
+  - WaterStream
   - 
   - 
   - 
