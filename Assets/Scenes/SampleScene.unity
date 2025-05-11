@@ -59058,7 +59058,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3496628516989391925, guid: e5ad71617c90db645bacf5b5dcd42ae2, type: 3}
       propertyPath: CollisionModule.m_Planes.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3496628516989391925, guid: e5ad71617c90db645bacf5b5dcd42ae2, type: 3}
       propertyPath: TriggerModule.primitives.Array.size
