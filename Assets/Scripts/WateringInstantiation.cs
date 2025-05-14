@@ -11,13 +11,11 @@ public class WateringInstantiation : MonoBehaviour
     [SerializeField] float limitAngle; // The angle at which the water stream deactivates
 
     private bool isWatering = false;
-    private Vector3 initialForward;
 
     private void Awake()
     {
 
         waterStream.Stop();
-        initialForward = transform.forward;
     }
     private void Update()
         {

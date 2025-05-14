@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Seed Pack
   - SeedStream
+  - BudPrefab
+  - WaterStream
+  - HoeBlade
+  - TrowelPoint
+  - FlameStream
   layers:
   - Default
   - TransparentFX
@@ -16,9 +21,9 @@ TagManager:
   - SeedStream
   - WaterCan
   - WaterStream
-  - 
-  - 
-  - 
+  - Signs
+  - FlameStream
+  - FlameThrower
   - 
   - 
   - 
