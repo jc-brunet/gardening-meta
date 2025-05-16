@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2439161708236105523}
   - component: {fileID: 7921486423045868477}
-  - component: {fileID: 9091344709168172369}
+  - component: {fileID: -186118431744900163}
   m_Layer: 0
   m_Name: Planter
   m_TagString: Untagged
@@ -54,9 +54,9 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.05, y: 0.01, z: 0.05}
+  m_Size: {x: 1, y: 0.05, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &9091344709168172369
+--- !u!114 &-186118431744900163
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -65,23 +65,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 3425117175796193286}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 509b7eafa33a4fc43ad86c33bd2d2741, type: 3}
+  m_Script: {fileID: 11500000, guid: 73df952a8a0b88e41bd9c90d3383d2c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   IsBud: 0
   IsFlower: 0
-  IsWilted: 0
-  IsDecayed: 0
-  IsWeed: 0
-  BudPrefab: {fileID: 1297858789879444158, guid: 14b59d0f7086bd540ad84e3af72389bf, type: 3}
+  BudPrefab: {fileID: 1247415686580988382, guid: d928fd55b0706dd489231bd328fb0f31, type: 3}
   FlowerPrefab: {fileID: 1297858789879444158, guid: eb929a24ea9d7b34b8250825ec312dbc, type: 3}
-  WiltedPrefab: {fileID: 1297858789879444158, guid: 515f9ea872b626840ab78d996984bbd9, type: 3}
-  DecayedPrefab: {fileID: 1491991850977900130, guid: e21eea30c6f78ab449c00f855c6c902c, type: 3}
-  WeedPrefab: {fileID: 7389972862934052504, guid: ec010ad8fe46bf241b08b6b4b60ab7ab, type: 3}
   FlowerSpawn: {fileID: 8715323007007379325}
-  TimeToWilted: 5
-  TimeToDecayed: 5
-  TimeToWeed: 5
 --- !u!1 &5423164190240243375
 GameObject:
   m_ObjectHideFlags: 0
