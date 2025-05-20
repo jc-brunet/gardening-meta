@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlanterCollisionManagerSimple : MonoBehaviour
@@ -6,10 +7,7 @@ public class PlanterCollisionManagerSimple : MonoBehaviour
     public bool IsBud;
     public bool IsFlower;
     //public bool IsWilted;
-
-    [SerializeField] GameObject BudPrefab;
-    [SerializeField] GameObject FlowerPrefab;
-    //[SerializeField] GameObject WiltedPrefab;
+    private GameObject _flowerPrefab;
 
     [SerializeField] Transform FlowerSpawn;
 
@@ -47,8 +45,10 @@ public class PlanterCollisionManagerSimple : MonoBehaviour
         {
             if (other.CompareTag("SeedStream"))
             {
+                GameObject budPrefab = other.GetComponentInParent<SeedInstantiation>().BudPrefab;
+                _thisBud = Instantiate(budPrefab, FlowerSpawn);
+                _flowerPrefab = other.GetComponentInParent<SeedInstantiation>().FlowerPrefab;
                 IsBud = true;
-                _thisBud = Instantiate(BudPrefab, FlowerSpawn);
             }
         }
         else
@@ -57,12 +57,12 @@ public class PlanterCollisionManagerSimple : MonoBehaviour
             {
                 if (other.CompareTag("WaterStream"))
                 {
-                    {
-                        IsFlower = true;
-                        GameObject.Destroy(_thisBud);
-                        _thisFlower = Instantiate(FlowerPrefab, FlowerSpawn);
-                        //Invoke("TransitionToWilted", TimeToWilted);
-                    }
+
+                    Destroy(_thisBud);
+                    _thisFlower = Instantiate(_flowerPrefab, FlowerSpawn);
+                    IsFlower = true;
+                    //Invoke("TransitionToWilted", TimeToWilted);
+
                 }
             }
             //else
@@ -90,6 +90,7 @@ public class PlanterCollisionManagerSimple : MonoBehaviour
             //    }
             //}
         }
+        
     }
 
     private void OnCollisionEnter(Collision collision)

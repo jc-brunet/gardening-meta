@@ -121,7 +121,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 943108684641386390, guid: a4173d82a18b9604aad695f86b6794ac, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.0110002
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 943108684641386390, guid: a4173d82a18b9604aad695f86b6794ac, type: 3}
       propertyPath: m_LocalRotation.w
@@ -183,7 +183,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 943108684641386390, guid: a4173d82a18b9604aad695f86b6794ac, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.019
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 943108684641386390, guid: a4173d82a18b9604aad695f86b6794ac, type: 3}
       propertyPath: m_LocalRotation.w
@@ -241,7 +241,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3733957961901150346, guid: a7864f3428d59c54baa3168d73e5bf91, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.989
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3733957961901150346, guid: a7864f3428d59c54baa3168d73e5bf91, type: 3}
       propertyPath: m_LocalRotation.w
@@ -307,7 +307,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 943108684641386390, guid: a4173d82a18b9604aad695f86b6794ac, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.98300004
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 943108684641386390, guid: a4173d82a18b9604aad695f86b6794ac, type: 3}
       propertyPath: m_LocalRotation.w
@@ -369,7 +369,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 943108684641386390, guid: a4173d82a18b9604aad695f86b6794ac, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.984
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 943108684641386390, guid: a4173d82a18b9604aad695f86b6794ac, type: 3}
       propertyPath: m_LocalRotation.w
