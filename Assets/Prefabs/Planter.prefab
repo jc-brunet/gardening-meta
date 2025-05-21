@@ -54,7 +54,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.05, z: 1}
+  m_Size: {x: 1, y: 0.1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &-186118431744900163
 MonoBehaviour:
@@ -70,8 +70,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsBud: 0
   IsFlower: 0
-  BudPrefab: {fileID: 1247415686580988382, guid: d928fd55b0706dd489231bd328fb0f31, type: 3}
-  FlowerPrefab: {fileID: 1297858789879444158, guid: eb929a24ea9d7b34b8250825ec312dbc, type: 3}
   FlowerSpawn: {fileID: 8715323007007379325}
 --- !u!1 &5423164190240243375
 GameObject:

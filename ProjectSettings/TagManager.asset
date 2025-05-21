@@ -11,6 +11,31 @@ TagManager:
   - HoeBlade
   - TrowelPoint
   - FlameStream
+  - QDSUIBorderlessButton
+  - QDSUIIcon
+  - QDSUISharedThemeColor
+  - QDSUIToggleSwitch
+  - QDSUITooltip
+  - QDSUIAccentColor
+  - QDSUIBackplateGradient
+  - QDSUIPrimaryButton
+  - QDSUITextInvertedColor
+  - QDSUITextSecondaryInvertedColor
+  - QDSUIToggleButton
+  - QDSUITextSecondaryColor
+  - QDSUIToggleBorderlessButton
+  - QDSUISecondaryButton
+  - QDSUISection
+  - QDSUITextInputField
+  - QDSUIDestructiveButton
+  - SamplesInfoPanel
+  - Locomotion
+  - PassThroughButton
+  - LocoButton
+  - LocoText
+  - PassThrough
+  - QDSUIToggleCheckboxRadio
+  - SpawnTray
   layers:
   - Default
   - TransparentFX

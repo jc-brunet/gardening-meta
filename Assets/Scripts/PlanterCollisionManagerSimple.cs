@@ -41,19 +41,19 @@ public class PlanterCollisionManagerSimple : MonoBehaviour
     public void OnParticleCollision(GameObject other)
     {
 
-        if (!IsBud)
-        {
-            if (other.CompareTag("SeedStream"))
-            {
-                GameObject budPrefab = other.GetComponentInParent<SeedInstantiation>().BudPrefab;
-                _thisBud = Instantiate(budPrefab, FlowerSpawn);
-                _flowerPrefab = other.GetComponentInParent<SeedInstantiation>().FlowerPrefab;
-                IsBud = true;
-            }
-        }
-        else
-        {
-            if (!IsFlower)
+        //if (!IsBud)
+        //{
+        //    if (other.CompareTag("SeedStream"))
+        //    {
+        //        GameObject budPrefab = other.GetComponentInParent<SeedInstantiation>().BudPrefab;
+        //        _thisBud = Instantiate(budPrefab, FlowerSpawn);
+        //        _flowerPrefab = other.GetComponentInParent<SeedInstantiation>().FlowerPrefab;
+        //        IsBud = true;
+        //    }
+        //}
+        //else
+        //{
+            if (IsBud && !IsFlower)
             {
                 if (other.CompareTag("WaterStream"))
                 {
@@ -89,7 +89,7 @@ public class PlanterCollisionManagerSimple : MonoBehaviour
             //        }
             //    }
             //}
-        }
+        //}
         
     }
 
@@ -99,7 +99,20 @@ public class PlanterCollisionManagerSimple : MonoBehaviour
         //{
         //    _thisBud = GameObject.Instantiate(BudPrefab, FlowerSpawn);
         //}
-        if (collision.relativeVelocity.magnitude > 1f && collision.collider.CompareTag("HoeBlade"))
+
+        GameObject other = collision.collider.gameObject;
+        if (other.CompareTag("SpawnTray"))
+        {
+            CollisionConstants collisionConstants = other.GetComponent<CollisionConstants>();
+            GameObject budPrefab = collisionConstants.BudPrefab;
+            _flowerPrefab = collisionConstants.FlowerPrefab;
+            _thisBud = Instantiate(budPrefab, FlowerSpawn);
+            Instantiate(other, collisionConstants.OriginTransform.position, collisionConstants.OriginTransform.rotation);
+            Destroy(other);
+            IsBud = true;
+        }
+
+        if (collision.relativeVelocity.magnitude > 1f && other.CompareTag("HoeBlade"))
         {
             GameObject.Destroy(_thisBud);
             GameObject.Destroy(_thisFlower);
