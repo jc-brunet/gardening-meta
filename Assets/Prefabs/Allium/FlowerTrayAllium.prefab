@@ -41,6 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1438997635307647986}
+  - component: {fileID: -1968539000160683280}
   m_Layer: 0
   m_Name: FlowerTrayAllium
   m_TagString: Untagged
@@ -72,6 +73,18 @@ Transform:
   - {fileID: 4531902677806794973}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-1968539000160683280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1247415686580988382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7069170c6db2aaf4abd96955b9466fda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5679845780562917056
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,6 +354,18 @@ PrefabInstance:
       value: Flora_Allium
       objectReference: {fileID: 0}
     - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -379,6 +404,10 @@ PrefabInstance:
     - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -403,6 +432,18 @@ PrefabInstance:
       value: Flora_Allium
       objectReference: {fileID: 0}
     - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -441,6 +482,10 @@ PrefabInstance:
     - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -465,6 +510,18 @@ PrefabInstance:
       value: Flora_Allium
       objectReference: {fileID: 0}
     - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -503,6 +560,10 @@ PrefabInstance:
     - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -527,6 +588,18 @@ PrefabInstance:
       value: Flora_Allium
       objectReference: {fileID: 0}
     - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -565,6 +638,10 @@ PrefabInstance:
     - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -589,6 +666,18 @@ PrefabInstance:
       value: Flora_Allium
       objectReference: {fileID: 0}
     - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -627,6 +716,10 @@ PrefabInstance:
     - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -651,6 +744,18 @@ PrefabInstance:
       value: Flora_Allium
       objectReference: {fileID: 0}
     - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -689,6 +794,10 @@ PrefabInstance:
     - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -713,6 +822,18 @@ PrefabInstance:
       value: Flora_Allium
       objectReference: {fileID: 0}
     - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -751,6 +872,10 @@ PrefabInstance:
     - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -775,6 +900,18 @@ PrefabInstance:
       value: Flora_Allium
       objectReference: {fileID: 0}
     - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -813,6 +950,10 @@ PrefabInstance:
     - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -837,6 +978,18 @@ PrefabInstance:
       value: Flora_Allium
       objectReference: {fileID: 0}
     - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -875,6 +1028,10 @@ PrefabInstance:
     - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821817524109015582, guid: 6fb20a08f2e932b429b4cf6f7fd30536, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
