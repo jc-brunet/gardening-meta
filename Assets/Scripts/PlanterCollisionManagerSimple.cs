@@ -107,8 +107,16 @@ public class PlanterCollisionManagerSimple : MonoBehaviour
             GameObject budPrefab = collisionConstants.BudPrefab;
             _flowerPrefab = collisionConstants.FlowerPrefab;
             _thisBud = Instantiate(budPrefab, FlowerSpawn);
-            Instantiate(other, collisionConstants.OriginTransform.position, collisionConstants.OriginTransform.rotation);
-            Destroy(other);
+            Transform parentTransform = collisionConstants.OriginTransform;
+            if (collisionConstants.HasRespawned) { return; }
+            else
+            {
+                collisionConstants.HasRespawned = true;
+                GameObject newTray = Instantiate(other, parentTransform.position, parentTransform.rotation, parentTransform);
+                newTray.GetComponent<Rigidbody>().isKinematic = false;
+                newTray.GetComponent<CollisionConstants>().HasRespawned = false;
+                Destroy(other);
+            }
             IsBud = true;
         }
 

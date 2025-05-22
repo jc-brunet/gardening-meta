@@ -80,6 +80,7 @@ MonoBehaviour:
   BudPrefab: {fileID: 1247415686580988382, guid: 7560405c743d1ad4e8f0e7ab3e2cc362, type: 3}
   FlowerPrefab: {fileID: 1247415686580988382, guid: d4f3830547985404994a39d9d13a2c3e, type: 3}
   OriginTransform: {fileID: 0}
+  HasRespawned: 0
 --- !u!65 &8114538205360347256
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -153,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 0
+  GlobalObjectIdHash: 1629374664
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -539,6 +540,19 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: -7293568492299617069, guid: ed7e8c8f51cd23c498c93bd3662904b8, type: 3}
     - {fileID: 773258887851387430, guid: ed7e8c8f51cd23c498c93bd3662904b8, type: 3}
+    - {fileID: -7690833288040939663, guid: ed7e8c8f51cd23c498c93bd3662904b8, type: 3}
+    - {fileID: 7460514279592418874, guid: ed7e8c8f51cd23c498c93bd3662904b8, type: 3}
+    - {fileID: -7227269411378886657, guid: ed7e8c8f51cd23c498c93bd3662904b8, type: 3}
+    - {fileID: -1573138290835697131, guid: ed7e8c8f51cd23c498c93bd3662904b8, type: 3}
+    - {fileID: -6414688942558709196, guid: ed7e8c8f51cd23c498c93bd3662904b8, type: 3}
+    - {fileID: 66052300177054790, guid: ed7e8c8f51cd23c498c93bd3662904b8, type: 3}
+    - {fileID: -5016101619915580192, guid: ed7e8c8f51cd23c498c93bd3662904b8, type: 3}
+    - {fileID: 5733632593536273493, guid: ed7e8c8f51cd23c498c93bd3662904b8, type: 3}
+    - {fileID: 5416406585142187786, guid: ed7e8c8f51cd23c498c93bd3662904b8, type: 3}
+    - {fileID: 4255066827246596678, guid: ed7e8c8f51cd23c498c93bd3662904b8, type: 3}
+    - {fileID: -8077056853559725380, guid: ed7e8c8f51cd23c498c93bd3662904b8, type: 3}
+    - {fileID: 189222528986506760, guid: ed7e8c8f51cd23c498c93bd3662904b8, type: 3}
+    - {fileID: -6315106203171007610, guid: ed7e8c8f51cd23c498c93bd3662904b8, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: -7184210109462156, guid: ed7e8c8f51cd23c498c93bd3662904b8, type: 3}
       insertIndex: -1
