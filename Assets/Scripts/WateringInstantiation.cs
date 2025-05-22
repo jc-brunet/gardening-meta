@@ -6,56 +6,74 @@ using UnityEngine.UIElements;
 
 public class WateringInstantiation : MonoBehaviour
     {
+    public bool IsEmpty;
+
     [SerializeField] ParticleSystem waterStream; // The water stream prefab to spawn
     [SerializeField] float activationAngle; // The angle at which the water stream activates
     [SerializeField] float limitAngle; // The angle at which the water stream deactivates
     [SerializeField] float EulerX;
+    [SerializeField] float WaterDecreasingRate;
+    [SerializeField] int MaxWaterAmount;
 
+    private int _waterAmountLeft;
     private bool isWatering = false;
 
     private void Awake()
     {
-
         waterStream.Stop();
+        _waterAmountLeft = MaxWaterAmount;
     }
     private void Update()
         {
-        // Get the current rotation of the watering can
-        Vector3 eulerAngles = GetPitchYawRollDeg(transform.rotation);
+        if (!IsEmpty)
+        {
 
-        EulerX = eulerAngles.x;
+            // Get the current rotation of the watering can
+            Vector3 eulerAngles = GetPitchYawRollDeg(transform.rotation);
 
+            EulerX = eulerAngles.x;
+
+
+            if (!isWatering)
+            {
+                if (_waterAmountLeft > 0 && EulerX > activationAngle && EulerX < limitAngle)
+                {
+                    StartWatering();
+                }
+            }
+            else
+            {
+                if (_waterAmountLeft <= 0 || !(EulerX > activationAngle && EulerX < limitAngle))
+                {
+                    StopWatering();
+                    if (_waterAmountLeft <= 0)
+                    {
+                        GetComponentInChildren<SpriteRenderer>().enabled = true;
+                        IsEmpty = true;
+                    }
+                }
+            }
+        }
 
         //// Check if the watering can is tilted more than the activation angle
         //if ((EulerX > activationAngle || EulerX < limitAngle))
-            // Check if the watering can is tilted more than the activation angle
-            if (EulerX > activationAngle && EulerX < limitAngle)
-            {
-            if (!isWatering)
-                {
-                StartWatering();
-                }
-            }
-        else 
-            {
-            if (isWatering)
-                {
-                StopWatering();
-                }
-            }
+        // Check if the watering can is tilted more than the activation angle
+
     }
 
     private void StartWatering()
         {
         isWatering = true;
         waterStream.Play();
+        InvokeRepeating(nameof(_DecreaseWater), WaterDecreasingRate, WaterDecreasingRate);
     }
 
     private void StopWatering()
         {
         waterStream.Stop();
         isWatering = false;
-        }
+        CancelInvoke(nameof(_DecreaseWater));
+    }
 
     public static Vector3 GetPitchYawRollRad(Quaternion rotation)
     {
@@ -79,5 +97,20 @@ public class WateringInstantiation : MonoBehaviour
             return angle - 360;
 
         return angle;
+    }
+
+    private void _DecreaseWater()
+    {
+        if(_waterAmountLeft > 0)
+        {
+            _waterAmountLeft--;
+        }
+    }
+
+    public void FillTank()
+    {
+        _waterAmountLeft = MaxWaterAmount;
+        GetComponentInChildren<SpriteRenderer>().enabled = false;
+        IsEmpty = false;
     }
 }

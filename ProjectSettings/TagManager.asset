@@ -36,6 +36,7 @@ TagManager:
   - PassThrough
   - QDSUIToggleCheckboxRadio
   - SpawnTray
+  - WateringCan
   layers:
   - Default
   - TransparentFX
@@ -49,6 +50,7 @@ TagManager:
   - Signs
   - FlameStream
   - FlameThrower
+  - Overlay UI
   - 
   - 
   - 
@@ -67,8 +69,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - OVROverlayCanvas Rendering
   m_SortingLayers:
   - name: Default
     uniqueID: 0
