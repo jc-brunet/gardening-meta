@@ -14,11 +14,11 @@ public class TapCollisionManager : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(UnityEngine.Collider other)
     {
-        if (collision.collider.CompareTag("WateringCan"))
+        if (other.CompareTag("WateringCan"))
         {
-            collision.collider.GetComponent<WateringInstantiation>().FillTank();
+            other.GetComponent<WateringInstantiation>().FillTank();
         }
     }
 }

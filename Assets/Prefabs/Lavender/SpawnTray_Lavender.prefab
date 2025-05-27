@@ -77,7 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64af2e6cdd330d44f9cfb66d7bba2457, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BudPrefab: {fileID: 1247415686580988382, guid: 88310838b802d8a4e83ff627e66accb9, type: 3}
+  BudPrefab: {fileID: 1247415686580988382, guid: e2e4ae0ca0ecdb4458463bc4b0d80b7d, type: 3}
   FlowerPrefab: {fileID: 1247415686580988382, guid: 258f3b5dbc8bde244b3ad62d0da9bf64, type: 3}
   OriginTransform: {fileID: 0}
   HasRespawned: 0
@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2959908657
+  GlobalObjectIdHash: 811074315
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1

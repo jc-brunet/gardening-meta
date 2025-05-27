@@ -4,17 +4,17 @@ using UnityEngine;
 public class PlanterCollisionManagerSimple : MonoBehaviour
 {
 
-    public bool IsBud;
-    public bool IsFlower;
+    public bool IsLv1;
+    public bool IsLv2;
     //public bool IsWilted;
-    private GameObject _flowerPrefab;
+    private GameObject _lv2Prefab;
 
     [SerializeField] Transform FlowerSpawn;
 
     //[SerializeField] float TimeToWilted;
 
-    private GameObject _thisBud;
-    private GameObject _thisFlower;
+    private GameObject _thisLv1;
+    private GameObject _thisLv2;
     //private GameObject _thisWilted;
 
 
@@ -27,8 +27,8 @@ public class PlanterCollisionManagerSimple : MonoBehaviour
         flowerSpawnPos.z += Random.Range(-0.01f, 0.01f);
         FlowerSpawn.transform.position = flowerSpawnPos;
 
-        IsBud = false;
-        IsFlower = false;
+        IsLv1 = false;
+        IsLv2 = false;
         //IsWilted = false;
     }
 
@@ -53,14 +53,14 @@ public class PlanterCollisionManagerSimple : MonoBehaviour
         //}
         //else
         //{
-            if (IsBud && !IsFlower)
+            if (IsLv1 && !IsLv2)
             {
                 if (other.CompareTag("WaterStream"))
                 {
 
-                    Destroy(_thisBud);
-                    _thisFlower = Instantiate(_flowerPrefab, FlowerSpawn);
-                    IsFlower = true;
+                    Destroy(_thisLv1);
+                    _thisLv2 = Instantiate(_lv2Prefab, FlowerSpawn);
+                    IsLv2 = true;
                     //Invoke("TransitionToWilted", TimeToWilted);
 
                 }
@@ -101,13 +101,14 @@ public class PlanterCollisionManagerSimple : MonoBehaviour
         //}
 
         GameObject other = collision.collider.gameObject;
-        if (other.CompareTag("SpawnTray"))
+        if (!IsLv1 && other.CompareTag("SpawnTray"))
         {
             CollisionConstants collisionConstants = other.GetComponent<CollisionConstants>();
             GameObject budPrefab = collisionConstants.BudPrefab;
-            _flowerPrefab = collisionConstants.FlowerPrefab;
-            _thisBud = Instantiate(budPrefab, FlowerSpawn);
+            _lv2Prefab = collisionConstants.FlowerPrefab;
+            _thisLv1 = Instantiate(budPrefab, FlowerSpawn);
             Transform parentTransform = collisionConstants.OriginTransform;
+            IsLv1 = true;
             if (collisionConstants.HasRespawned) { return; }
             else
             {
@@ -117,16 +118,15 @@ public class PlanterCollisionManagerSimple : MonoBehaviour
                 newTray.GetComponent<CollisionConstants>().HasRespawned = false;
                 Destroy(other);
             }
-            IsBud = true;
         }
 
         if (collision.relativeVelocity.magnitude > 1f && other.CompareTag("HoeBlade"))
         {
-            GameObject.Destroy(_thisBud);
-            GameObject.Destroy(_thisFlower);
+            GameObject.Destroy(_thisLv1);
+            GameObject.Destroy(_thisLv2);
             //GameObject.Destroy(_thisWilted);
-            IsBud = false;
-            IsFlower = false;
+            IsLv1 = false;
+            IsLv2 = false;
             ////IsWilted = false;
             //CancelInvoke("TransitionToWilted");
         }
