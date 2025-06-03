@@ -1,3 +1,5 @@
+using System.Collections;
+using Oculus.Interaction;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -6,18 +8,24 @@ public class PlanterCollisionManagerSimple : MonoBehaviour
 
     public bool IsLv1;
     public bool IsLv2;
+    public bool IsLv3;
     //public bool IsWilted;
     private GameObject _lv2Prefab;
+    private GameObject _lv3Prefab;
 
     [SerializeField] Transform FlowerSpawn;
+    [SerializeField] float WaterNeededToGrow;
+    [SerializeField] AudioSource PlantingSound;
+    [SerializeField] AudioSource WateringSound;
 
     //[SerializeField] float TimeToWilted;
 
     private GameObject _thisLv1;
     private GameObject _thisLv2;
+    private GameObject _thisLv3;
     //private GameObject _thisWilted;
 
-
+    private float _wateringCounter;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,68 +37,39 @@ public class PlanterCollisionManagerSimple : MonoBehaviour
 
         IsLv1 = false;
         IsLv2 = false;
-        //IsWilted = false;
+        IsLv3 = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (_wateringCounter > WaterNeededToGrow)
+        {
+            if (IsLv1 && !IsLv2)
+            {
+                Destroy(_thisLv1);
+                _thisLv2 = Instantiate(_lv2Prefab, FlowerSpawn);
+                WateringSound.Play();
+                IsLv2 = true;
+                _wateringCounter = 0f;
+            }
+            else if (IsLv2 && !IsLv3)
+            {
+                Destroy(_thisLv2);
+                _thisLv3 = Instantiate(_lv3Prefab, FlowerSpawn);
+                WateringSound.Play();
+                IsLv3 = true;
+                _wateringCounter = 0f;
+            }
+        }
     }
 
     public void OnParticleCollision(GameObject other)
     {
-
-        //if (!IsBud)
-        //{
-        //    if (other.CompareTag("SeedStream"))
-        //    {
-        //        GameObject budPrefab = other.GetComponentInParent<SeedInstantiation>().BudPrefab;
-        //        _thisBud = Instantiate(budPrefab, FlowerSpawn);
-        //        _flowerPrefab = other.GetComponentInParent<SeedInstantiation>().FlowerPrefab;
-        //        IsBud = true;
-        //    }
-        //}
-        //else
-        //{
-            if (IsLv1 && !IsLv2)
-            {
-                if (other.CompareTag("WaterStream"))
-                {
-
-                    Destroy(_thisLv1);
-                    _thisLv2 = Instantiate(_lv2Prefab, FlowerSpawn);
-                    IsLv2 = true;
-                    //Invoke("TransitionToWilted", TimeToWilted);
-
-                }
-            }
-            //else
-            //{
-            //    if (!IsWilted)
-            //    {
-            //        if (other.CompareTag("WaterStream"))
-            //        {
-            //            CancelInvoke("TransitionToWilted");
-            //            Invoke("TransitionToWilted", TimeToWilted);
-            //        }
-            //    }
-            //    else
-            //    {
-            //        if (other.CompareTag("WaterStream"))
-            //        {
-            //            {
-            //                IsWilted = false;
-            //                GameObject.Destroy(_thisWilted);
-            //                _thisFlower = Instantiate(FlowerPrefab, FlowerSpawn);
-            //                Invoke("TransitionToWilted", TimeToWilted);
-
-            //            }
-            //        }
-            //    }
-            //}
-        //}
-        
+        if (other.CompareTag("WaterStream"))
+        {
+            _wateringCounter += Time.deltaTime;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -100,13 +79,42 @@ public class PlanterCollisionManagerSimple : MonoBehaviour
         //    _thisBud = GameObject.Instantiate(BudPrefab, FlowerSpawn);
         //}
 
-        GameObject other = collision.collider.gameObject;
-        if (!IsLv1 && other.CompareTag("SpawnTray"))
+        //GameObject other = collision.collider.gameObject;
+        //if (!IsLv1 && other.CompareTag("SpawnTray"))
+        //{
+        //    //PlantBud(other);
+        //}
+
+        if (collision.collider.CompareTag("HoeBlade") && collision.relativeVelocity.magnitude > 0.3f)
+        {
+            collision.collider.GetComponentInChildren<AudioSource>().Play();
+            DestroyEverything();
+        }
+    }
+
+    public void DestroyEverything()
+    {
+        GameObject.Destroy(_thisLv1);
+        GameObject.Destroy(_thisLv2);
+        GameObject.Destroy (_thisLv3);
+        //GameObject.Destroy(_thisWilted);
+        IsLv1 = false;
+        IsLv2 = false;
+        IsLv3 = false;
+        ////IsWilted = false;
+        //CancelInvoke("TransitionToWilted");
+    }
+
+    public void PlantBud(GameObject other)
+    {
+        if (!IsLv1)
         {
             CollisionConstants collisionConstants = other.GetComponent<CollisionConstants>();
-            GameObject budPrefab = collisionConstants.BudPrefab;
-            _lv2Prefab = collisionConstants.FlowerPrefab;
-            _thisLv1 = Instantiate(budPrefab, FlowerSpawn);
+            GameObject lv1Prefab = collisionConstants.Lv1Prefab;
+            _lv2Prefab = collisionConstants.Lv2Prefab;
+            _lv3Prefab = collisionConstants.Lv3Prefab;
+            _thisLv1 = Instantiate(lv1Prefab, FlowerSpawn);
+            PlantingSound.Play();
             Transform parentTransform = collisionConstants.OriginTransform;
             IsLv1 = true;
             if (collisionConstants.HasRespawned) { return; }
@@ -119,23 +127,5 @@ public class PlanterCollisionManagerSimple : MonoBehaviour
                 Destroy(other);
             }
         }
-
-        if (collision.relativeVelocity.magnitude > 1f && other.CompareTag("HoeBlade"))
-        {
-            GameObject.Destroy(_thisLv1);
-            GameObject.Destroy(_thisLv2);
-            //GameObject.Destroy(_thisWilted);
-            IsLv1 = false;
-            IsLv2 = false;
-            ////IsWilted = false;
-            //CancelInvoke("TransitionToWilted");
-        }
     }
-
-    //private void TransitionToWilted()
-    //{
-    //    GameObject.Destroy(_thisFlower);
-    //    //_thisWilted = Instantiate(WiltedPrefab, FlowerSpawn);
-    //    //IsWilted = true;
-    //}
 }

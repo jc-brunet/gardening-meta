@@ -15,13 +15,23 @@ public class WateringInstantiation : MonoBehaviour
     [SerializeField] float WaterDecreasingRate;
     [SerializeField] int MaxWaterAmount;
 
+    [SerializeField] GameObject[] WaterLevel; 
+
     private int _waterAmountLeft;
-    private bool isWatering = false;
+    private bool _isWatering;
+    private int _waterLevelStep;
+    private int _currentWaterLevel;
+
+    [SerializeField] AudioFade WaterSoundFade;
 
     private void Awake()
     {
         waterStream.Stop();
+        MaxWaterAmount -= MaxWaterAmount % 5;
         _waterAmountLeft = MaxWaterAmount;
+        _waterLevelStep = MaxWaterAmount / 5;
+        _currentWaterLevel = 5;
+        _isWatering = false;
     }
     private void Update()
         {
@@ -34,7 +44,7 @@ public class WateringInstantiation : MonoBehaviour
             EulerX = eulerAngles.x;
 
 
-            if (!isWatering)
+            if (!_isWatering)
             {
                 if (_waterAmountLeft > 0 && EulerX > activationAngle && EulerX < limitAngle)
                 {
@@ -48,7 +58,6 @@ public class WateringInstantiation : MonoBehaviour
                     StopWatering();
                     if (_waterAmountLeft <= 0)
                     {
-                        GetComponentInChildren<SpriteRenderer>().enabled = true;
                         IsEmpty = true;
                     }
                 }
@@ -63,16 +72,18 @@ public class WateringInstantiation : MonoBehaviour
 
     private void StartWatering()
         {
-        isWatering = true;
+        _isWatering = true;
         waterStream.Play();
         InvokeRepeating(nameof(_DecreaseWater), WaterDecreasingRate, WaterDecreasingRate);
+        WaterSoundFade.FadeIn();
     }
 
     private void StopWatering()
         {
         waterStream.Stop();
-        isWatering = false;
+        _isWatering = false;
         CancelInvoke(nameof(_DecreaseWater));
+        WaterSoundFade.FadeOut();
     }
 
     public static Vector3 GetPitchYawRollRad(Quaternion rotation)
@@ -104,13 +115,31 @@ public class WateringInstantiation : MonoBehaviour
         if(_waterAmountLeft > 0)
         {
             _waterAmountLeft--;
+            _CheckWaterLevel(_currentWaterLevel);
         }
     }
 
     public void FillTank()
     {
         _waterAmountLeft = MaxWaterAmount;
-        GetComponentInChildren<SpriteRenderer>().enabled = false;
         IsEmpty = false;
+        _ResetWaterLevel();
+    }
+
+    private void _CheckWaterLevel(int lastWaterLevel)
+    {
+        _currentWaterLevel = _waterAmountLeft / _waterLevelStep + ((_waterAmountLeft % _waterLevelStep==0) ? 0:1);
+        if (lastWaterLevel > _currentWaterLevel)
+        {
+            WaterLevel[_currentWaterLevel].SetActive(false);
+        }
+    }
+
+    private void _ResetWaterLevel()
+    {
+        foreach (GameObject level in WaterLevel)
+        {
+            level.SetActive(true);
+        }
     }
 }
