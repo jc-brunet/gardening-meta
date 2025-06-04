@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class RandomizeHeight : MonoBehaviour
 {
-
+    public bool CorrectYPosition;
     public RandomizeHeightSO MyConstants;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -27,6 +27,10 @@ public class RandomizeHeight : MonoBehaviour
             originalScale *= randomScale;
             originalPos.x += randomEpsilonX;
             originalPos.z += randomEpsilonZ;
+            if (CorrectYPosition)
+            {
+                originalPos.y *= randomScale;
+            }
             child.localScale = originalScale;
             child.localPosition = originalPos;
             child.Rotate(Vector3.up, Random.Range(-rotationVariance, rotationVariance));

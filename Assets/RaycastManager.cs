@@ -6,10 +6,10 @@ public class RaycastManager : MonoBehaviour
 {
     private HighlightSquare currentHighlightedSquare;
     private bool _isRayCastActive;
+    public Transform StartingPoint;
 
     private void Start()
     {
-        
     }
     void Update()
     {
@@ -34,23 +34,24 @@ public class RaycastManager : MonoBehaviour
                 }
                 else
                 {
-                    if (currentHighlightedSquare != null)
-                    {
-                        currentHighlightedSquare.ResetHighlight();
-                        currentHighlightedSquare = null;
-                    }
+                    ResetHighlights();
                 }
             }
             else
             {
-                if (currentHighlightedSquare != null)
-                {
-                    currentHighlightedSquare.ResetHighlight();
-                    currentHighlightedSquare = null;
-                }
+                ResetHighlights();
             }
         }
 
+    }
+
+    private void ResetHighlights()
+    {
+        if (currentHighlightedSquare != null)
+        {
+            currentHighlightedSquare.ResetHighlight();
+            currentHighlightedSquare = null;
+        }
     }
 
     public void PlantFlowers()

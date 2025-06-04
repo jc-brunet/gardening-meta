@@ -14,11 +14,11 @@ PrefabInstance:
       objectReference: {fileID: 235940878990270541}
     - target: {fileID: 281018496992031413, guid: 63a8cfdcbdf738a4a8729f08975dd62b, type: 3}
       propertyPath: instanceId
-      value: 8dab0e48-4d9e-4071-bfd0-f3231d7a5f04
+      value: 7d390bdc-362c-461a-b611-04d95d98989b
       objectReference: {fileID: 0}
     - target: {fileID: 997788413909430625, guid: 63a8cfdcbdf738a4a8729f08975dd62b, type: 3}
       propertyPath: instanceId
-      value: 2eac8004-0a9f-4c46-bcc0-8342547835d8
+      value: 04513e77-1bba-4708-959b-fa1c0e32f030
       objectReference: {fileID: 0}
     - target: {fileID: 1247415686580988382, guid: 63a8cfdcbdf738a4a8729f08975dd62b, type: 3}
       propertyPath: m_Name
@@ -88,11 +88,11 @@ PrefabInstance:
       objectReference: {fileID: 5716207475940786798}
     - target: {fileID: 281018496992031413, guid: 63a8cfdcbdf738a4a8729f08975dd62b, type: 3}
       propertyPath: instanceId
-      value: be123dfa-e6cc-4c97-b5de-39d9e6dc3b8f
+      value: c882cf15-0ae0-4d4d-b2df-b65c5c006447
       objectReference: {fileID: 0}
     - target: {fileID: 997788413909430625, guid: 63a8cfdcbdf738a4a8729f08975dd62b, type: 3}
       propertyPath: instanceId
-      value: c627e683-f903-4602-ba91-acd6d3a4e23c
+      value: 10b59a20-84c0-4ee6-8f51-5f216c252015
       objectReference: {fileID: 0}
     - target: {fileID: 1247415686580988382, guid: 63a8cfdcbdf738a4a8729f08975dd62b, type: 3}
       propertyPath: m_Name
@@ -156,9 +156,41 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 483351964350309071, guid: c0376f38f6e735e48b8e9eec6ba3517c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 2539135504997917337, guid: c0376f38f6e735e48b8e9eec6ba3517c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 2574581970194079916, guid: c0376f38f6e735e48b8e9eec6ba3517c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3699177435657816618, guid: c0376f38f6e735e48b8e9eec6ba3517c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481120242807016904, guid: c0376f38f6e735e48b8e9eec6ba3517c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 5547793404648804989, guid: c0376f38f6e735e48b8e9eec6ba3517c, type: 3}
       propertyPath: m_Name
       value: WireShelf_Flowers_02 Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 6394413770693659284, guid: c0376f38f6e735e48b8e9eec6ba3517c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7022188714033815822, guid: c0376f38f6e735e48b8e9eec6ba3517c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7039473293635552948, guid: c0376f38f6e735e48b8e9eec6ba3517c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7665621457201294293, guid: c0376f38f6e735e48b8e9eec6ba3517c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -243,11 +275,11 @@ PrefabInstance:
       objectReference: {fileID: 2097557656545269234}
     - target: {fileID: 281018496992031413, guid: 63a8cfdcbdf738a4a8729f08975dd62b, type: 3}
       propertyPath: instanceId
-      value: 82aa3f61-2931-40f8-bf6e-4512937aecd4
+      value: 2dd174df-1cd7-4f23-9145-b61e4809fb8b
       objectReference: {fileID: 0}
     - target: {fileID: 997788413909430625, guid: 63a8cfdcbdf738a4a8729f08975dd62b, type: 3}
       propertyPath: instanceId
-      value: 788a91c7-2f02-4f9f-8976-48fd0b97b11e
+      value: b9fed3a6-b310-4f4e-8368-ed7f0fa0e8f9
       objectReference: {fileID: 0}
     - target: {fileID: 1247415686580988382, guid: 63a8cfdcbdf738a4a8729f08975dd62b, type: 3}
       propertyPath: m_Name
