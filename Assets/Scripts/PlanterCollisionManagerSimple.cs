@@ -85,8 +85,9 @@ public class PlanterCollisionManagerSimple : MonoBehaviour
         //    //PlantBud(other);
         //}
 
-        if (collision.collider.CompareTag("HoeBlade") && collision.relativeVelocity.magnitude > 0.3f)
+        if (collision.collider.CompareTag("HoeBlade") && collision.relativeVelocity.y > 1f)
         {
+            Debug.Log("collision");
             collision.collider.GetComponentInChildren<AudioSource>().Play();
             DestroyEverything();
         }
@@ -96,7 +97,7 @@ public class PlanterCollisionManagerSimple : MonoBehaviour
     {
         GameObject.Destroy(_thisLv1);
         GameObject.Destroy(_thisLv2);
-        GameObject.Destroy (_thisLv3);
+        GameObject.Destroy(_thisLv3);
         //GameObject.Destroy(_thisWilted);
         IsLv1 = false;
         IsLv2 = false;
@@ -117,15 +118,10 @@ public class PlanterCollisionManagerSimple : MonoBehaviour
             PlantingSound.Play();
             Transform parentTransform = collisionConstants.OriginTransform;
             IsLv1 = true;
-            if (collisionConstants.HasRespawned) { return; }
-            else
-            {
-                collisionConstants.HasRespawned = true;
-                GameObject newTray = Instantiate(other, parentTransform.position, parentTransform.rotation, parentTransform);
-                newTray.GetComponent<Rigidbody>().isKinematic = false;
-                newTray.GetComponent<CollisionConstants>().HasRespawned = false;
-                Destroy(other);
-            }
+            GameObject newTray = Instantiate(other, parentTransform.position, parentTransform.rotation, parentTransform);
+            newTray.GetComponent<Rigidbody>().isKinematic = false;
+            Destroy(other);
         }
     }
 }
+
