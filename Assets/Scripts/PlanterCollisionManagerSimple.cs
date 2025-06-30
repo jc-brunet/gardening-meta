@@ -17,6 +17,7 @@ public class PlanterCollisionManagerSimple : MonoBehaviour
     [SerializeField] float WaterNeededToGrow;
     [SerializeField] AudioSource PlantingSound;
     [SerializeField] AudioSource WateringSound;
+    [SerializeField] float HoeSpeedThreshold;
 
     //[SerializeField] float TimeToWilted;
 
@@ -85,7 +86,7 @@ public class PlanterCollisionManagerSimple : MonoBehaviour
         //    //PlantBud(other);
         //}
 
-        if (collision.collider.CompareTag("HoeBlade") && collision.relativeVelocity.y > 1f)
+        if (collision.collider.CompareTag("HoeBlade") && Mathf.Abs(collision.relativeVelocity.y) > HoeSpeedThreshold)
         {
             Debug.Log("collision");
             collision.collider.GetComponentInChildren<AudioSource>().Play();
