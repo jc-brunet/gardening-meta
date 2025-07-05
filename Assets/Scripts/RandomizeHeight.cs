@@ -5,7 +5,7 @@ public class RandomizeHeight : MonoBehaviour
     public bool CorrectYPosition;
     public RandomizeHeightSO MyConstants;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Awake()
+    void Start()
     {
         float positionVariance = MyConstants.Positionvariance;
         float scaleVariance = MyConstants.ScaleVariance;

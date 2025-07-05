@@ -1,15 +1,18 @@
 using System.Collections;
+using System.Runtime.CompilerServices;
 using Oculus.Interaction;
+using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlanterCollisionManagerSimple : MonoBehaviour
+public class PlanterCollisionManagerSimple : NetworkBehaviour
 {
 
     public bool IsLv1;
     public bool IsLv2;
     public bool IsLv3;
     //public bool IsWilted;
+    private GameObject _lv1Prefab;
     private GameObject _lv2Prefab;
     private GameObject _lv3Prefab;
 
@@ -19,13 +22,12 @@ public class PlanterCollisionManagerSimple : MonoBehaviour
     [SerializeField] AudioSource WateringSound;
     [SerializeField] float HoeSpeedThreshold;
 
-    //[SerializeField] float TimeToWilted;
-
     private GameObject _thisLv1;
     private GameObject _thisLv2;
     private GameObject _thisLv3;
-    //private GameObject _thisWilted;
-
+    private GameObject _newTray;
+    private GameObject _oldTray;
+    private Transform _parentTransformForNewTray;
     private float _wateringCounter;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -48,16 +50,16 @@ public class PlanterCollisionManagerSimple : MonoBehaviour
         {
             if (IsLv1 && !IsLv2)
             {
-                Destroy(_thisLv1);
-                _thisLv2 = Instantiate(_lv2Prefab, FlowerSpawn);
+                DespawnLv1ServerRPC();
+                SpawnLv2ServerRPC();
                 WateringSound.Play();
                 IsLv2 = true;
                 _wateringCounter = 0f;
             }
             else if (IsLv2 && !IsLv3)
             {
-                Destroy(_thisLv2);
-                _thisLv3 = Instantiate(_lv3Prefab, FlowerSpawn);
+                DespawnLv2ServerRPC();
+                SpawnLv3ServerRPC();
                 WateringSound.Play();
                 IsLv3 = true;
                 _wateringCounter = 0f;
@@ -90,15 +92,16 @@ public class PlanterCollisionManagerSimple : MonoBehaviour
         {
             Debug.Log("collision");
             collision.collider.GetComponentInChildren<AudioSource>().Play();
+            DespawnEverythingServerRPC();
             DestroyEverything();
         }
     }
 
     public void DestroyEverything()
     {
-        GameObject.Destroy(_thisLv1);
-        GameObject.Destroy(_thisLv2);
-        GameObject.Destroy(_thisLv3);
+        //GameObject.Destroy(_thisLv1);
+        //GameObject.Destroy(_thisLv2);
+        //GameObject.Destroy(_thisLv3);
         //GameObject.Destroy(_thisWilted);
         IsLv1 = false;
         IsLv2 = false;
@@ -112,17 +115,81 @@ public class PlanterCollisionManagerSimple : MonoBehaviour
         if (!IsLv1)
         {
             CollisionConstants collisionConstants = other.GetComponent<CollisionConstants>();
-            GameObject lv1Prefab = collisionConstants.Lv1Prefab;
+            _lv1Prefab = collisionConstants.Lv1Prefab;
             _lv2Prefab = collisionConstants.Lv2Prefab;
             _lv3Prefab = collisionConstants.Lv3Prefab;
-            _thisLv1 = Instantiate(lv1Prefab, FlowerSpawn);
+            SpawnLv1ServerRPC();
             PlantingSound.Play();
-            Transform parentTransform = collisionConstants.OriginTransform;
+            _parentTransformForNewTray = collisionConstants.OriginTransform;
             IsLv1 = true;
-            GameObject newTray = Instantiate(other, parentTransform.position, parentTransform.rotation, parentTransform);
-            newTray.GetComponent<Rigidbody>().isKinematic = false;
-            Destroy(other);
+            _oldTray = other;
+            SpawnNewTrayServerRPC();
+            _newTray.GetComponent<Rigidbody>().isKinematic = false;
+            //Destroy(other);
+
         }
+    }
+
+    [ServerRpc]
+    private void SpawnLv1ServerRPC(ServerRpcParams rpcParams = default)
+    {
+        _thisLv1 = Instantiate(_lv1Prefab, FlowerSpawn);
+        NetworkObject thisLv1NO = _thisLv1.GetComponent<NetworkObject>();
+        thisLv1NO.Spawn();
+    }
+
+
+    [ServerRpc]
+    private void SpawnLv2ServerRPC(ServerRpcParams rpcParams = default)
+    {
+        _thisLv2 = Instantiate(_lv2Prefab, FlowerSpawn);
+        _thisLv2.GetComponent<NetworkObject>().Spawn();
+    }
+
+    [ServerRpc]
+    private void SpawnLv3ServerRPC(ServerRpcParams rpcParams = default)
+    {
+        _thisLv3 = Instantiate(_lv3Prefab, FlowerSpawn);
+        _thisLv3.GetComponent<NetworkObject>().Spawn();
+    }
+
+    [ServerRpc]
+    private void SpawnNewTrayServerRPC(ServerRpcParams rpcParams = default)
+    {
+        _newTray = Instantiate(_oldTray, _parentTransformForNewTray.position, _parentTransformForNewTray.rotation, _parentTransformForNewTray);
+        NetworkObject newTrayNO = _newTray.GetComponent<NetworkObject>();
+        newTrayNO.Spawn();
+        newTrayNO.TrySetParent(_parentTransformForNewTray, true);
+        _oldTray.GetComponent<NetworkObject>().Despawn();
+    }
+
+    [ServerRpc]
+    private void DespawnLv1ServerRPC(ServerRpcParams rpcParams = default)
+    {
+        _thisLv1.GetComponent<NetworkObject>().Despawn();
+    }
+
+    [ServerRpc]
+    private void DespawnLv2ServerRPC(ServerRpcParams rpcParams = default)
+    {
+        _thisLv2.GetComponent<NetworkObject>().Despawn();
+    }
+
+    [ServerRpc]
+    private void DespawnEverythingServerRPC(ServerRpcParams rpcParams = default) { 
+
+        if (_thisLv1){ _thisLv1.GetComponent<NetworkObject>().Despawn(); }
+        if (_thisLv2){ _thisLv2.GetComponent<NetworkObject>().Despawn(); }
+        if (_thisLv3){ _thisLv3.GetComponent<NetworkObject>().Despawn(); }
+
+
+        //NetworkObject thisLv1NO = _thisLv1.GetComponent<NetworkObject>();
+        //NetworkObject thisLv2NO = _thisLv2.GetComponent<NetworkObject>();
+        //NetworkObject thisLv3NO = _thisLv3.GetComponent<NetworkObject>();
+
+        //if (thisLv1NO != null) {thisLv1NO.Despawn(); }
+        //if (thisLv2NO != null) {thisLv2NO.Despawn(); }  
+        //if (thisLv3NO != null) {thisLv3NO.Despawn(); }
     }
 }
 
