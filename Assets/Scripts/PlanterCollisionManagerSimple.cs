@@ -136,6 +136,7 @@ public class PlanterCollisionManagerSimple : NetworkBehaviour
         _thisLv1 = Instantiate(_lv1Prefab, FlowerSpawn);
         NetworkObject thisLv1NO = _thisLv1.GetComponent<NetworkObject>();
         thisLv1NO.Spawn();
+        thisLv1NO.TrySetParent(gameObject);
     }
 
 
@@ -143,14 +144,18 @@ public class PlanterCollisionManagerSimple : NetworkBehaviour
     private void SpawnLv2ServerRPC(ServerRpcParams rpcParams = default)
     {
         _thisLv2 = Instantiate(_lv2Prefab, FlowerSpawn);
-        _thisLv2.GetComponent<NetworkObject>().Spawn();
+        NetworkObject thisLv2NO = _thisLv2.GetComponent<NetworkObject>();
+        thisLv2NO.Spawn();
+        thisLv2NO.TrySetParent(gameObject);
     }
 
     [ServerRpc]
     private void SpawnLv3ServerRPC(ServerRpcParams rpcParams = default)
     {
         _thisLv3 = Instantiate(_lv3Prefab, FlowerSpawn);
-        _thisLv3.GetComponent<NetworkObject>().Spawn();
+        NetworkObject thisLv3NO = _thisLv3.GetComponent<NetworkObject>();
+        thisLv3NO.Spawn();
+        thisLv3NO.TrySetParent(gameObject);
     }
 
     [ServerRpc]
@@ -159,7 +164,7 @@ public class PlanterCollisionManagerSimple : NetworkBehaviour
         _newTray = Instantiate(_oldTray, _parentTransformForNewTray.position, _parentTransformForNewTray.rotation, _parentTransformForNewTray);
         NetworkObject newTrayNO = _newTray.GetComponent<NetworkObject>();
         newTrayNO.Spawn();
-        newTrayNO.TrySetParent(_parentTransformForNewTray, true);
+        //newTrayNO.TrySetParent(_parentTransformForNewTray);
         _oldTray.GetComponent<NetworkObject>().Despawn();
     }
 
