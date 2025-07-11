@@ -27,6 +27,7 @@ public class PlanterCollisionManagerSimple : NetworkBehaviour
     private GameObject _thisLv3;
     private GameObject _newTray;
     private GameObject _oldTray;
+    private GameObject _trayPrefab;
     private Transform _parentTransformForNewTray;
     private float _wateringCounter;
 
@@ -75,7 +76,7 @@ public class PlanterCollisionManagerSimple : NetworkBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(UnityEngine.Collider other)
     {
         //if (!IsBud && collision.collider.CompareTag("FlowerTray"))
         //{
@@ -88,10 +89,11 @@ public class PlanterCollisionManagerSimple : NetworkBehaviour
         //    //PlantBud(other);
         //}
 
-        if (collision.collider.CompareTag("HoeBlade") && Mathf.Abs(collision.relativeVelocity.y) > HoeSpeedThreshold)
+        if (other.CompareTag("HoeBlade")
+            //&& Mathf.Abs(other.GetComponentInParent<Rigidbody>().linearVelocity.y) > HoeSpeedThreshold
+            )
         {
-            Debug.Log("collision");
-            collision.collider.GetComponentInChildren<AudioSource>().Play();
+            other.GetComponent<AudioSource>().Play();
             DespawnEverythingServerRPC();
             DestroyEverything();
         }
@@ -110,7 +112,7 @@ public class PlanterCollisionManagerSimple : NetworkBehaviour
         //CancelInvoke("TransitionToWilted");
     }
 
-    public void PlantBud(GameObject other)
+    public void PlantBud(GameObject other, GameObject prefabOfOther)
     {
         if (!IsLv1)
         {
@@ -123,6 +125,7 @@ public class PlanterCollisionManagerSimple : NetworkBehaviour
             _parentTransformForNewTray = collisionConstants.OriginTransform;
             IsLv1 = true;
             _oldTray = other;
+            _trayPrefab = prefabOfOther;
             SpawnNewTrayServerRPC();
             _newTray.GetComponent<Rigidbody>().isKinematic = false;
             //Destroy(other);
@@ -161,10 +164,12 @@ public class PlanterCollisionManagerSimple : NetworkBehaviour
     [ServerRpc]
     private void SpawnNewTrayServerRPC(ServerRpcParams rpcParams = default)
     {
-        _newTray = Instantiate(_oldTray, _parentTransformForNewTray.position, _parentTransformForNewTray.rotation, _parentTransformForNewTray);
+        _newTray = Instantiate(_trayPrefab, _parentTransformForNewTray.position, _parentTransformForNewTray.rotation, _parentTransformForNewTray);
+        _newTray.GetComponent<CollisionConstants>().OriginTransform = _parentTransformForNewTray;
         NetworkObject newTrayNO = _newTray.GetComponent<NetworkObject>();
+        newTrayNO.SpawnWithObservers = true;
         newTrayNO.Spawn();
-        //newTrayNO.TrySetParent(_parentTransformForNewTray);
+        newTrayNO.TrySetParent(_parentTransformForNewTray);
         _oldTray.GetComponent<NetworkObject>().Despawn();
     }
 

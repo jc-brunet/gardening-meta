@@ -6,6 +6,7 @@ public class RaycastManager : MonoBehaviour
     private HighlightSquare currentHighlightedSquare;
     public Transform StartingPoint;
     private Rigidbody _thisRigidbody;
+    [SerializeField] GameObject ThisPrefab;
 
     private void Awake()
     {
@@ -91,7 +92,7 @@ public class RaycastManager : MonoBehaviour
         if (currentHighlightedSquare != null)
         {
             currentHighlightedSquare.ResetHighlight();
-            currentHighlightedSquare.gameObject.GetComponent<PlanterCollisionManagerSimple>().PlantBud(this.gameObject);
+            currentHighlightedSquare.gameObject.GetComponent<PlanterCollisionManagerSimple>().PlantBud(this.gameObject, ThisPrefab);
             currentHighlightedSquare = null;
         }
     }

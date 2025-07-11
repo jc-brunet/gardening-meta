@@ -37,6 +37,7 @@ TagManager:
   - QDSUIToggleCheckboxRadio
   - SpawnTray
   - WateringCan
+  - Planter
   layers:
   - Default
   - TransparentFX
