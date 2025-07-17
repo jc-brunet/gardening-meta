@@ -23,13 +23,14 @@ public class RaycastManager : MonoBehaviour
                 RaycastHit hit = new();
                 Vector3 rayDirection = -transform.up;
 
-                if (Physics.Raycast(transform.position, rayDirection, out hit))
+                if (Physics.Raycast(transform.position, rayDirection, out hit)) 
                 {
                     HighlightSquare square = hit.collider.GetComponent<HighlightSquare>();
                     if (square != null)
                     {
                         resetCounter = 0;
-                        if (square.gameObject.GetComponent<PlanterCollisionManagerSimple>().IsLv1)
+                        PlanterCollisionManagerSimple planterCollision = square.gameObject.GetComponent<PlanterCollisionManagerSimple>();
+                        if (planterCollision.PlantStage.Value != GrowthStage.None)
                         {
                             ResetHighlights();
                         }

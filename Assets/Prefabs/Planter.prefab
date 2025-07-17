@@ -200,15 +200,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 553990722
+  GlobalObjectIdHash: 948945803
   InScenePlacedSourceGlobalObjectIdHash: 0
+  DeferredDespawnTick: 0
+  Ownership: 1
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
   SceneMigrationSynchronization: 1
   SpawnWithObservers: 1
-  DontDestroyWithOwner: 0
+  DontDestroyWithOwner: 1
   AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
 --- !u!114 &-186118431744900163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,9 +225,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73df952a8a0b88e41bd9c90d3383d2c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsLv1: 0
-  IsLv2: 0
-  IsLv3: 0
+  ShowTopMostFoldoutHeaderGroup: 1
+  PlantStage:
+    m_InternalValue: 0
   FlowerSpawn: {fileID: 8715323007007379325}
   WaterNeededToGrow: 2
   PlantingSound: {fileID: 144449151132700825}
