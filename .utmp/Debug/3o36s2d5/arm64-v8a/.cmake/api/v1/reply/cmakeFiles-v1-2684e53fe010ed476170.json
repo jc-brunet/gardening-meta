@@ -179,6 +179,17 @@
 		{
 			"isExternal" : true,
 			"path" : "C:/Users/jchar/Documents/Unity_Divers/Projets_VR/IPC4MH_meta/.utmp/Debug/3o36s2d5/prefab/arm64-v8a/prefab/lib/aarch64-linux-android/cmake/game-activity/game-activityConfig.cmake"
+		},
+		{
+			"path" : "FramePacing/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/Users/jchar/Documents/Unity_Divers/Projets_VR/IPC4MH_meta/.utmp/Debug/3o36s2d5/prefab/arm64-v8a/prefab/lib/aarch64-linux-android/cmake/games-frame-pacing/games-frame-pacingConfigVersion.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/Users/jchar/Documents/Unity_Divers/Projets_VR/IPC4MH_meta/.utmp/Debug/3o36s2d5/prefab/arm64-v8a/prefab/lib/aarch64-linux-android/cmake/games-frame-pacing/games-frame-pacingConfig.cmake"
 		}
 	],
 	"kind" : "cmakeFiles",

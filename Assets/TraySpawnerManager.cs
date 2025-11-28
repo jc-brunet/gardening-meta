@@ -66,6 +66,7 @@ public class TraySpawnerManager : NetworkBehaviour
         {
             netObj.Spawn();
             netObj.TrySetParent(spawner);
+            netObj.DontDestroyWithOwner = true;
         }
 
         CollisionConstants collisionConstants = trayInstance.GetComponent<CollisionConstants>();

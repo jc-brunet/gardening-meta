@@ -33,8 +33,56 @@ public class WateringInstantiation : MonoBehaviour
         _currentWaterLevel = 5;
         _isWatering = false;
     }
+
+    //private Coroutine tiltCheckRoutine;
+
+    //private void OnEnable()
+    //{
+    //    tiltCheckRoutine = StartCoroutine(TiltMonitor());
+    //}
+
+    //private void OnDisable()
+    //{
+    //    if (tiltCheckRoutine != null)
+    //        StopCoroutine(tiltCheckRoutine);
+    //}
+
+    //private IEnumerator TiltMonitor()
+    //{
+    //    WaitForSeconds delay = new WaitForSeconds(0.02f); // 50 FPS = every 20ms
+
+    //    while (!IsEmpty)
+    //    {
+    //        Vector3 eulerAngles = GetPitchYawRollDeg(transform.rotation);
+    //        EulerX = eulerAngles.x;
+
+    //        bool inTiltRange = EulerX > activationAngle && EulerX < limitAngle;
+
+    //        if (!_isWatering)
+    //        {
+    //            if (_waterAmountLeft > 0 && inTiltRange)
+    //            {
+    //                StartWatering();
+    //            }
+    //        }
+    //        else
+    //        {
+    //            if (_waterAmountLeft <= 0 || !inTiltRange)
+    //            {
+    //                StopWatering();
+    //                if (_waterAmountLeft <= 0)
+    //                {
+    //                    IsEmpty = true;
+    //                }
+    //            }
+    //        }
+
+    //        yield return delay;
+    //    }
+    //}
+
     private void Update()
-        {
+    {
         if (!IsEmpty)
         {
 
@@ -72,6 +120,7 @@ public class WateringInstantiation : MonoBehaviour
 
     private void StartWatering()
         {
+         //OVRManager.SetSpaceWarp(false);
         _isWatering = true;
         waterStream.Play();
         InvokeRepeating(nameof(_DecreaseWater), WaterDecreasingRate, WaterDecreasingRate);
@@ -84,6 +133,7 @@ public class WateringInstantiation : MonoBehaviour
         _isWatering = false;
         CancelInvoke(nameof(_DecreaseWater));
         WaterSoundFade.FadeOut();
+        //OVRManager.SetSpaceWarp(true);
     }
 
     public static Vector3 GetPitchYawRollRad(Quaternion rotation)

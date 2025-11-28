@@ -166,7 +166,7 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 1
+  SceneMigrationSynchronization: 0
   SpawnWithObservers: 1
   DontDestroyWithOwner: 1
   AutoObjectParentSync: 1
@@ -213,7 +213,7 @@ MonoBehaviour:
   ScaleThreshold: 0.01
   UseQuaternionSynchronization: 0
   UseQuaternionCompression: 0
-  UseHalfFloatPrecision: 0
+  UseHalfFloatPrecision: 1
   InLocalSpace: 0
   SwitchTransformSpaceWhenParented: 0
   Interpolate: 1
@@ -551,8 +551,8 @@ MonoBehaviour:
   _targetTransform: {fileID: 1438997635307647986}
   _maxGrabPoints: 1
   _rigidbody: {fileID: 4852363202238975776}
-  _kinematicWhileSelected: 0
-  _throwWhenUnselected: 0
+  _kinematicWhileSelected: 1
+  _throwWhenUnselected: 1
 --- !u!114 &4993439421958180842
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -25,6 +25,8 @@ public class VivoxVoiceManager : MonoBehaviour
     string _domain;
     [SerializeField]
     string _server;
+    private string channelName = "myChannel";
+    private Channel3DProperties _channel3DProperties;
 
     /// <summary>
     /// Access singleton instance through this propriety.
@@ -58,6 +60,7 @@ public class VivoxVoiceManager : MonoBehaviour
 
     async void Awake()
     {
+
         if (m_Instance != this && m_Instance != null)
         {
             Debug.LogWarning(
@@ -72,7 +75,13 @@ public class VivoxVoiceManager : MonoBehaviour
 
         await UnityServices.InitializeAsync(options);
         await VivoxService.Instance.InitializeAsync();
-
+        if (AuthenticationService.Instance.IsSignedIn)
+        {
+            Debug.Log("correctly signed in vivox");
+            await VivoxService.Instance.LoginAsync();
+            await VivoxService.Instance.JoinPositionalChannelAsync(channelName, ChatCapability.AudioOnly, _channel3DProperties);
+        }
+        else { Debug.Log("signedin failed"); }
     }
 
     public async Task InitializeAsync(string playerName)
