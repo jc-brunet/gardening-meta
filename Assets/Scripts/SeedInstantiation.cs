@@ -11,6 +11,9 @@ public class SeedInstantiation : MonoBehaviour
     [SerializeField] float eulerX;
     [SerializeField] float eulerZ;
 
+    public GameObject BudPrefab;
+    public GameObject FlowerPrefab;
+
     private int count;
     public bool isSeeding = false;
     private void Awake()

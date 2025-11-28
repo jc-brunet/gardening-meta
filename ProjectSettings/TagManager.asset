@@ -6,6 +6,38 @@ TagManager:
   tags:
   - Seed Pack
   - SeedStream
+  - BudPrefab
+  - WaterStream
+  - HoeBlade
+  - TrowelPoint
+  - FlameStream
+  - QDSUIBorderlessButton
+  - QDSUIIcon
+  - QDSUISharedThemeColor
+  - QDSUIToggleSwitch
+  - QDSUITooltip
+  - QDSUIAccentColor
+  - QDSUIBackplateGradient
+  - QDSUIPrimaryButton
+  - QDSUITextInvertedColor
+  - QDSUITextSecondaryInvertedColor
+  - QDSUIToggleButton
+  - QDSUITextSecondaryColor
+  - QDSUIToggleBorderlessButton
+  - QDSUISecondaryButton
+  - QDSUISection
+  - QDSUITextInputField
+  - QDSUIDestructiveButton
+  - SamplesInfoPanel
+  - Locomotion
+  - PassThroughButton
+  - LocoButton
+  - LocoText
+  - PassThrough
+  - QDSUIToggleCheckboxRadio
+  - SpawnTray
+  - WateringCan
+  - Planter
   layers:
   - Default
   - TransparentFX
@@ -16,6 +48,11 @@ TagManager:
   - SeedStream
   - WaterCan
   - WaterStream
+  - Signs
+  - FlameStream
+  - FlameThrower
+  - Overlay UI
+  - TeleportBlocker
   - 
   - 
   - 
@@ -33,12 +70,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - OVROverlayCanvas Rendering
   m_SortingLayers:
   - name: Default
     uniqueID: 0
